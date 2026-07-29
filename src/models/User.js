@@ -1,11 +1,21 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
+const cartItemSchema = new mongoose.Schema({
+  productId: { type: Number, required: true, min: 1 },
+  quantity: { type: Number, required: true, min: 1, max: 99, default: 1 },
+  size: { type: String, trim: true, maxlength: 30, default: null },
+  color: { type: String, trim: true, maxlength: 30, default: null },
+  offerId: { type: String, trim: true, maxlength: 60, default: null },
+}, { _id: false })
+
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true, minlength: 2, maxlength: 80 },
   email: { type: String, required: true, unique: true, lowercase: true, trim: true, index: true },
   password: { type: String, required: true, minlength: 8, select: false },
   role: { type: String, enum: ['customer', 'admin'], default: 'customer' },
+  cart: { type: [cartItemSchema], default: [] },
+  wishlist: { type: [Number], default: [] },
   resetPasswordToken: { type: String, select: false },
   resetPasswordExpires: { type: Date, select: false },
   lastLoginAt: Date,

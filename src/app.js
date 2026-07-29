@@ -6,6 +6,7 @@ import { env } from './config/env.js'
 import { errorHandler, notFound } from './middleware/errorHandler.js'
 import { authRouter } from './routes/authRoutes.js'
 import { contactRouter } from './routes/contactRoutes.js'
+import { collectionRouter } from './routes/collectionRoutes.js'
 
 export const app = express()
 app.set('trust proxy', 1)
@@ -25,5 +26,6 @@ app.use(cookieParser())
 app.get('/api/health', (_req, res) => res.json({ success: true, service: 'flex-api' }))
 app.use('/api/auth', authRouter)
 app.use('/api/contact', contactRouter)
+app.use('/api/account', collectionRouter)
 app.use(notFound)
 app.use(errorHandler)

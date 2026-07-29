@@ -21,6 +21,8 @@ The frontend development server proxies `/api` to `http://localhost:5001`. For a
 - `POST /api/auth/forgot-password`
 - `POST /api/auth/reset-password/:token`
 - `POST /api/contact`
+- `GET/PUT /api/account/cart`
+- `GET/PUT /api/account/wishlist`
 - `GET /api/health`
 
 Authentication uses an HTTP-only JWT cookie. Do not commit `.env`.
