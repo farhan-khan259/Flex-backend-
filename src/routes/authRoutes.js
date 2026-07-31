@@ -3,6 +3,9 @@ import { forgotPassword, login, logout, me, register, resetPassword, updateProfi
 import { requireAuth } from '../middleware/auth.js'
 import { authLimiter, passwordResetLimiter } from '../middleware/rateLimits.js'
 import { asyncHandler } from '../utils/asyncHandler.js'
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 export const authRouter = Router()
 authRouter.post('/register', authLimiter, asyncHandler(register))
