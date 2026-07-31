@@ -24,7 +24,10 @@ export const env = {
   jwtSecret: process.env.JWT_SECRET || 'development-only-change-this-secret',
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
   cookieName: process.env.COOKIE_NAME || 'flex_token',
-  clientUrls: (process.env.CLIENT_URL || 'http://localhost:3000').split(',').map((url) => url.trim()),
+  // Render needs both custom-domain variants to support credentialed browser requests.
+  clientUrls: (process.env.CLIENT_URL || (process.env.NODE_ENV === 'production'
+    ? 'https://flexofficial.co.uk,https://www.flexofficial.co.uk'
+    : 'http://localhost:3000')).split(',').map((url) => url.trim()),
   smtp: {
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: Number(process.env.SMTP_PORT) || 465,
