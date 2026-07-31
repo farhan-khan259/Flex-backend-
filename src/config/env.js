@@ -31,9 +31,9 @@ export const env = {
     secure: process.env.SMTP_SECURE !== 'false',
     user: process.env.SMTP_USER || '',
     pass: process.env.SMTP_PASS || '',
-    from: process.env.SMTP_FROM || 'FLEX Official <Info@flexofficial.co.uk>',
+    from: process.env.SMTP_FROM || 'FLEX Official <flexofficial26@gmail.com>',
   },
-  contactTo: process.env.CONTACT_TO || 'Info@flexofficial.co.uk',
+  contactTo: process.env.CONTACT_TO || 'flexofficial26@gmail.com',
 }
 
 export const isProduction = env.nodeEnv === 'production'
